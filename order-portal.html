@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CloudNest — Order Portal</title>
+<link rel="stylesheet" href="order-portal.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">C</span><span>CloudNest</span></div>
+    <div class="top-actions"><span class="credit">Balance <b id="balance">₹0</b></span><button class="avatar" id="accountBtn">RS</button></div>
+  </header>
+
+  <main class="content">
+    <section class="welcome-card">
+      <div><span class="eyebrow">ORDER PORTAL</span><h1>Manage your hosting<br><em>in one place.</em></h1><p>Order a hosting panel, connect a domain, track renewals and manage your services from one dashboard.</p></div>
+      <div class="hero-orb"><span>☁</span></div>
+    </section>
+
+    <section class="quick-grid">
+      <button class="quick-card active" data-view="panels"><span class="qicon">▤</span><b>Order Panel</b><small>Create a new hosting panel</small></button>
+      <button class="quick-card" data-view="domains"><span class="qicon">◎</span><b>Domains</b><small>Manage connected domains</small></button>
+      <button class="quick-card" data-view="invoices"><span class="qicon">▥</span><b>Invoices</b><small>View billing history</small></button>
+    </section>
+
+    <section id="panels" class="view active-view">
+      <div class="section-title"><div><span class="eyebrow">SERVICES</span><h2>Order a panel</h2></div><button class="outline" id="refreshBtn">↻ Refresh</button></div>
+      <div class="plans">
+        <article class="plan featured"><span class="tag">POPULAR</span><div class="plan-icon">⚡</div><h3>Starter Panel</h3><p>For small websites and personal projects.</p><div class="price">₹149 <small>/ month</small></div><ul><li>1 website</li><li>5 GB SSD storage</li><li>SSL included</li><li>Daily backup</li></ul><button class="primary order-btn" data-plan="Starter Panel" data-price="149">Order now</button></article>
+        <article class="plan"><div class="plan-icon">◆</div><h3>Business Panel</h3><p>More room for growing websites and stores.</p><div class="price">₹349 <small>/ month</small></div><ul><li>10 websites</li><li>30 GB SSD storage</li><li>SSL included</li><li>Priority support</li></ul><button class="primary order-btn" data-plan="Business Panel" data-price="349">Order now</button></article>
+        <article class="plan"><div class="plan-icon">✦</div><h3>Pro Panel</h3><p>High-capacity hosting for multiple projects.</p><div class="price">₹699 <small>/ month</small></div><ul><li>Unlimited websites</li><li>100 GB SSD storage</li><li>Advanced backup</li><li>Priority support</li></ul><button class="primary order-btn" data-plan="Pro Panel" data-price="699">Order now</button></article>
+      </div>
+
+      <div class="orders-card">
+        <div class="section-title compact"><div><span class="eyebrow">MY ORDERS</span><h2>Active panels</h2></div><span class="count" id="orderCount">0 orders</span></div>
+        <div id="ordersList" class="orders-list"><div class="empty"><span>☁</span><b>No panels yet</b><small>Your new orders will appear here.</small></div></div>
+      </div>
+    </section>
+
+    <section id="invoices" class="view"><div class="section-title"><div><span class="eyebrow">BILLING</span><h2>Invoices</h2></div></div><div id="invoiceList" class="table-card"><div class="empty"><span>▥</span><b>No invoices</b><small>Invoices generated from your orders will show here.</small></div></div></section>
+    <section id="domains" class="view"><div class="section-title"><div><span class="eyebrow">DOMAIN MANAGER</span><h2>Your domains</h2></div><button class="primary" id="domainBtn">+ Add domain</button></div><div id="domainList" class="domain-grid"><div class="empty"><span>◎</span><b>No domains connected</b><small>Add a domain to connect it to a panel.</small></div></div></section>
+    <section id="funds" class="view"><div class="section-title"><div><span class="eyebrow">WALLET</span><h2>Add funds</h2></div></div><div class="fund-card"><label>Amount</label><div class="amount"><span>₹</span><input id="fundAmount" type="number" min="1" placeholder="Enter amount"></div><div class="fund-options"><button data-amount="199">₹199</button><button data-amount="499">₹499</button><button data-amount="999">₹999</button></div><button class="primary" id="addFundBtn">Add to wallet</button><p class="muted">Demo mode: this only updates the local wallet balance.</p></div></section>
+    <section id="reseller" class="view"><div class="info-card"><span class="eyebrow">RESELLER</span><h2>Reseller workspace</h2><p>Create and manage customer hosting accounts from one place.</p><button class="primary" onclick="toast('Reseller workspace opened')">Open reseller</button></div></section>
+    <section id="tickets" class="view"><div class="info-card"><span class="eyebrow">SUPPORT</span><h2>Support tickets</h2><p>Keep hosting questions and service requests organized.</p><button class="primary" onclick="toast('New ticket form is ready')">Create ticket</button></div></section>
+    <section id="updates" class="view"><div class="info-card"><span class="eyebrow">UPDATES</span><h2>Service updates</h2><div class="update"><b>System status</b><span class="status-dot"></span><small>All core services operational</small></div></div></section>
+    <section id="account" class="view"><div class="info-card"><span class="eyebrow">ACCOUNT</span><h2>Raj Sharma</h2><p>Manage your profile and portal preferences.</p><button class="outline" onclick="toast('Account settings opened')">Account settings</button></div></section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-view="panels"><span>▤</span><b>Panels</b></button>
+    <button class="nav-item" data-view="invoices"><span>▥</span><b>Invoices</b></button>
+    <button class="nav-item" data-view="funds"><span>₹</span><b>Add Funds</b></button>
+    <button class="nav-item" id="menuBtn"><span>☰</span><b>Menu</b></button>
+  </nav>
+</div>
+
+<div class="drawer-backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head"><b>CloudNest</b><button id="closeDrawer">×</button></div>
+  <div class="drawer-balance">Wallet balance <strong id="drawerBalance">₹0</strong></div>
+  <p class="drawer-label">MANAGE</p>
+  <button data-view="panels">▤ <span>Panels</span></button><button data-view="invoices">▥ <span>Invoices</span></button><button data-view="domains">◎ <span>Domains</span></button><button data-view="funds">₹ <span>Add Funds</span></button><button data-view="reseller">♢ <span>Reseller</span></button><button data-view="tickets">▱ <span>Tickets</span></button><button data-view="updates">◈ <span>Updates</span></button><button data-view="account">▢ <span>Account</span></button><button onclick="toast('Logged out of demo');closeDrawer()">↪ <span>Logout</span></button>
+</aside>
+
+<div class="modal" id="orderModal"><div class="modal-box"><button class="modal-close" id="closeModal">×</button><span class="eyebrow">NEW ORDER</span><h2 id="modalTitle">Starter Panel</h2><p class="muted">Enter the domain you want to attach to this hosting panel.</p><label>Domain</label><input id="orderDomain" placeholder="example.com"><label>Billing cycle</label><select id="billing"><option value="1">Monthly</option><option value="12">Yearly</option></select><div class="modal-total"><span>Total</span><b id="modalTotal">₹149</b></div><button class="primary full" id="confirmOrder">Confirm order</button></div></div>
+<div id="toast" class="toast"></div>
+<script src="order-portal.js"></script>
+</body></html>

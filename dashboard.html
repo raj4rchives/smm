@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartyWeb — Client Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="topbar"><span class="dot"></span> Build your next website faster — <b>Browse premium designs</b> <button id="closeTop">×</button></div>
+
+  <header class="nav">
+    <a class="brand" href="#"><span class="brand-mark"><i></i><i></i><i></i></span><span>cartyweb</span></a>
+    <nav class="desktop-nav">
+      <a href="#dashboard">Dashboard</a><a href="#orders">My Orders</a><a href="#websites">Websites</a><a href="#messages">Messages</a><a href="#billing">Billing</a>
+    </nav>
+    <div class="profile"><span class="avatar">RS</span><span class="user-name">Raj Sharma</span><span class="chev">⌄</span></div>
+    <button class="menu" id="menuBtn">☰</button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#dashboard">Dashboard</a><a href="#orders">My Orders</a><a href="#websites">Websites</a><a href="#messages">Messages</a><a href="#billing">Billing</a>
+  </div>
+
+  <main id="dashboard">
+    <section class="hero wrap">
+      <div class="eyebrow">CLIENT DASHBOARD</div>
+      <h1>Build something <span>great</span><br>today.</h1>
+      <p>Create a new website order, manage your projects, and keep everything in one place.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="createOrder">+ Create New Order</button>
+        <button class="btn secondary" id="browseBtn">Browse Websites <b>→</b></button>
+      </div>
+    </section>
+
+    <section class="wrap stats">
+      <div class="stat"><span>ACTIVE ORDERS</span><strong id="activeCount">0</strong><small>Currently in progress</small></div>
+      <div class="stat"><span>WEBSITES</span><strong>0</strong><small>Ready to launch</small></div>
+      <div class="stat"><span>PENDING ACTIONS</span><strong id="pendingCount">0</strong><small>Needs your attention</small></div>
+      <div class="stat"><span>TOTAL SPENT</span><strong>₹0</strong><small>Lifetime</small></div>
+    </section>
+
+    <section class="wrap create-card">
+      <div class="section-kicker">01 / START A PROJECT</div>
+      <div class="split-heading"><div><h2>Start a new website.</h2><p>Choose the easiest way to turn your idea into a professional website.</p></div><span class="spark">✦</span></div>
+      <div class="method-grid">
+        <article class="method">
+          <div class="num">01</div><div class="icon">⌕</div><h3>Start from a template</h3><p>Choose a ready-made website and customize it for your brand.</p><button onclick="openOrder('Template')">Browse templates <b>→</b></button>
+        </article>
+        <article class="method featured">
+          <div class="recommended">RECOMMENDED</div><div class="num">02</div><div class="icon">✦</div><h3>Create with AI</h3><p>Describe your website in your own words and get a smart starting concept.</p><button onclick="openOrder('AI')">Create with AI <b>→</b></button>
+        </article>
+        <article class="method">
+          <div class="num">03</div><div class="icon">◇</div><h3>Custom website</h3><p>Have something specific in mind? Tell us exactly what you need.</p><button onclick="openOrder('Custom')">Create custom order <b>→</b></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap orders" id="orders">
+      <div class="section-head"><div><div class="section-kicker">02 / PROJECTS</div><h2>Recent orders</h2></div><button class="text-btn" onclick="openOrder()">View all →</button></div>
+      <div id="ordersList" class="orders-list">
+        <div class="empty"><div class="empty-icon">＋</div><h3>No projects yet.</h3><p>Your first professional website is just a few clicks away.</p><button class="btn primary" onclick="openOrder()">Create your first order →</button></div>
+      </div>
+    </section>
+
+    <section class="inspire" id="websites">
+      <div class="wrap">
+        <div class="section-kicker">03 / INSPIRATION</div><h2>Start with a design<br><span>you already love.</span></h2>
+        <div class="site-grid">
+          <div class="site-card"><div class="preview preview-a"><b>ASTER</b><em>Make your<br>mark.</em><button>Explore →</button></div><div class="site-meta"><div><h3>Aster Studio</h3><p>Creative business website</p></div><strong>₹8,999</strong></div></div>
+          <div class="site-card"><div class="preview preview-b"><b>MONO</b><em>Less noise.<br>More impact.</em><button>Explore →</button></div><div class="site-meta"><div><h3>Mono Agency</h3><p>Modern agency website</p></div><strong>₹11,999</strong></div></div>
+          <div class="site-card"><div class="preview preview-c"><b>FORMA</b><em>Built for<br>bold brands.</em><button>Explore →</button></div><div class="site-meta"><div><h3>Forma Commerce</h3><p>E-commerce website</p></div><strong>₹14,999</strong></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap quick" id="messages">
+      <div class="section-kicker">04 / QUICK ACTIONS</div><h2>Everything in one place.</h2>
+      <div class="quick-grid">
+        <div><b>My Orders</b><p>Track active projects and previous orders.</p><span>→</span></div>
+        <div><b>Websites</b><p>View and manage your launched websites.</p><span>→</span></div>
+        <div><b>Messages</b><p>Chat with the CartyWeb team.</p><span>→</span></div>
+        <div><b>Billing</b><p>Manage invoices and payments.</p><span>→</span></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="orderModal">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="section-kicker">NEW ORDER</div>
+      <h2>Tell us what you're building.</h2>
+      <p class="modal-sub">We'll turn your idea into a clear website plan.</p>
+      <div class="steps"><b>01</b><span></span><b>02</b><span></span><b>03</b><span></span><b>04</b></div>
+      <label>Website type</label>
+      <div class="choices" id="types">
+        <button>Business</button><button>Portfolio</button><button>E-commerce</button><button>Restaurant</button><button>Agency</button><button>SaaS</button>
+      </div>
+      <label>Your idea</label>
+      <textarea id="idea" placeholder="Example: I need a modern clothing business website with products, WhatsApp ordering and a contact page."></textarea>
+      <div class="ai-note">✦ AI will turn your description into pages, features and a recommended plan.</div>
+      <button class="btn primary full" id="submitOrder">Continue →</button>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
